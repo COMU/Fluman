@@ -21,7 +21,7 @@ Requirements
 ------
 ----------
 
-```Apache```
+Apache
 
 Contributing
 ------
@@ -31,7 +31,7 @@ You can use issues page for bugs and feature requests. Any contribution is great
 
 Legal Stuff
 ------
-----------
+
 
 * [INK](http://ink.sapo.pt/) (under [MIT License](http://opensource.org/licenses/MIT))
 * [{LESS}](http://lesscss.org/) (under [Apache License 2.0](https://github.com/cloudhead/less.js/blob/master/LICENSE))
