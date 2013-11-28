@@ -29,6 +29,7 @@
 						<nav class="ink-navigation">
 							<ul class="menu vertical black">
 									<li><a href="#">Homepage</a></li>
+									<li><a href="config">Configuration</a></li>
 									<li><a href="logout">Logout</a></li>
 									@section('sidebar')
 									@show
