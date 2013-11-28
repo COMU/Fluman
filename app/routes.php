@@ -22,9 +22,8 @@ Route::get('/', array('as' => 'home'), function()
 });
 
 Route::get('dashboard', array('uses' => 'HomeController@dashboard'));
-
-
-
+Route::get('config', array('uses' => 'HomeController@showConfig'));
+Route::post('config', array('uses' => 'HomeController@doConfig'));
 Route::get('logout', array('as' => 'logout', function () {
     
     Auth::logout();
@@ -36,5 +35,4 @@ Route::get('logout', array('as' => 'logout', function () {
 
 
 Route::get('login', array('uses' => 'HomeController@showLogin'));
-
 Route::post('login', array('uses' => 'HomeController@doLogin'));

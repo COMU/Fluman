@@ -31,7 +31,17 @@ class HomeController extends BaseController {
 			return View::make('login');
 		}
 	}
+	
+	
+	public function showConfig()
+	{
+		return View::make('config');
+	}
 
+	public function doConfig()
+	{
+		return View::make('config');
+	}
 	
 	public function doLogin()
 	{
