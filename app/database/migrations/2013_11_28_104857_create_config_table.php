@@ -13,6 +13,7 @@ class CreateConfigTable extends Migration {
 	{
 		Schema::create('config', function($table)
 		{
+			$table->increments('id');
 			$table->string('flumePath', 256);
 		});
 	}
