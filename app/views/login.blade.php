@@ -1,5 +1,10 @@
 @extends('layouts.default')
 
+@section('title')
+Login
+@stop
+
+
 
 @section('content')
     <div class="column-group">
