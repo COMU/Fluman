@@ -35,12 +35,18 @@ class HomeController extends BaseController {
 	
 	public function showConfig()
 	{
-		return View::make('config');
+
+		$getConfig = DB::table('config')->select('flumePath')->first();
+		return View::make('config')->with('flumeLocation', $getConfig->flumePath);
 	}
 
 	public function doConfig()
 	{
-		return View::make('config');
+		DB::table('config')
+			->where('id', 1)
+			->update(array('flumePath' => Input::get('path')));
+		$getConfig = DB::table('config')->select('flumePath')->first();
+		return View::make('config')->with('flumeLocation', $getConfig->flumePath);
 	}
 	
 	public function doLogin()

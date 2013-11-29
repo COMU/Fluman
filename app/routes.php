@@ -23,7 +23,7 @@ Route::get('/', array('as' => 'home'), function()
 
 Route::get('dashboard', array('uses' => 'HomeController@dashboard'));
 Route::get('config', array('uses' => 'HomeController@showConfig'));
-Route::post('config', array('uses' => 'HomeController@doConfig'));
+Route::post('config', array('as' => 'doConfig', 'uses' => 'HomeController@doConfig'));
 Route::get('logout', array('as' => 'logout', function () {
     
     Auth::logout();

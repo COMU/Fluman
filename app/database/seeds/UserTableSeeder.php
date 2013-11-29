@@ -10,6 +10,12 @@ class UserTableSeeder extends Seeder
 			'username' => 'admin',
 			'password' => Hash::make('admin'),
 		));
+		DB::table('config')->delete();
+		$flumeLocation = array(
+                'flumePath' => "/usr/bin/flume-ng",
+            	);
+	        DB::table('config')->insert( $flumeLocation );
+
 	}
 
 }
