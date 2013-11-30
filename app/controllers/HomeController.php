@@ -42,9 +42,15 @@ class HomeController extends BaseController {
 
 	public function doConfig()
 	{
-		DB::table('config')
-			->where('id', 1)
-			->update(array('flumePath' => Input::get('path')));
+
+		if (file_exists(Input::get('path'))) {
+			DB::table('config')
+				->where('id', 1)
+				->update(array('flumePath' => Input::get('path')));
+		} else {
+			return Redirect::to('config')->withErrors(Input::get('path'));
+		}
+		
 		$getConfig = DB::table('config')->select('flumePath')->first();
 		return View::make('config')->with('flumeLocation', $getConfig->flumePath);
 	}
