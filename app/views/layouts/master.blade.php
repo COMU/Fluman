@@ -6,12 +6,11 @@
 			<meta name="HandheldFriendly" content="True">
 			<meta name="MobileOptimized" content="320">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-			<link rel="stylesheet" type="text/css" href="css/ink.css">
-			<link rel="stylesheet" type="text/css" href="css/custom.css">
+			{{ HTML::style('css/ink.css') }}
+			{{ HTML::style('css/custom.css') }}
 			<!--[if IE 7 ]>
-				<link rel="stylesheet" href="css/ink-ie7.css" type="text/css" media="screen" title="no title" charset="utf-8">
+				{{ HTML::style('css/ink-i7.css') }}
 			<![endif]-->
-
 		@section('head')
 		@show
 			
@@ -28,9 +27,10 @@
 						</h1>
 						<nav class="ink-navigation">
 							<ul class="menu vertical black">
-									<li><a href="dashboard">Homepage</a></li>
-									<li><a href="config">Configuration</a></li>
-									<li><a href="logout">Logout</a></li>
+									<li><a href="{{ URL::to('dashboard') }}">Homepage</a></li>
+									<li><a href="{{ URL::to('flume') }}">Flume</a></li>
+									<li><a href="{{ URL::to('config') }}">Configuration</a></li>
+									<li><a href="{{ URL::to('logout') }}">Logout</a></li>
 									@section('sidebar')
 									@show
 							
@@ -46,10 +46,11 @@
 			</div>
 		</div>
 
-			<script type="text/javascript" src="js/ink.min.js"></script>
-			<script type="text/javascript" src="js/ink-ui.min.js"></script>
-			<script type="text/javascript" src="js/autoload.js"></script>
-			<script type="text/javascript" src="js/html5shiv.js"></script>
+
+			{{ HTML::script('js/ink.min.js') }}
+			{{ HTML::script('js/ink-ui.min.js') }}
+			{{ HTML::script('js/autoload.js') }}
+			{{ HTML::script('js/html5shiv.js') }}
 			@section('footer_scripts')
 			@show
 
