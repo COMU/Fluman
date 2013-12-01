@@ -25,7 +25,9 @@ Configuration
 				<p class="tip">Current Location: <b>{{{ $flumeLocation }}}</b></p>
 			</div>
 			{{ Form::submit('Save') }}
-			{{ Form::close() }} 
+			{{ Form::close() }}
+			<hr>
+			<a href="flume/addConfig"><button class="ink-button red">Create a Flume Agent Configuration File</button></a>
 		</div>
 
 		<div id="users" class="tabs-content">

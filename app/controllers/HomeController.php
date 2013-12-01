@@ -32,6 +32,11 @@ class HomeController extends BaseController {
 		}
 	}
 	
+	public function addConfig()
+	{
+
+		return View::make('addConfig');
+	}
 	
 	public function showConfig()
 	{
