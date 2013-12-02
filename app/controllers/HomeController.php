@@ -21,6 +21,11 @@ class HomeController extends BaseController {
 		return View::make('dashboard');
 	}
 
+	public function showFlume()
+	{
+		return View::make('showFlume');
+	}
+	
 	public function showLogin()
 	{
 		if (Auth::check()) {
@@ -35,7 +40,7 @@ class HomeController extends BaseController {
 	public function addConfig()
 	{
 
-		return View::make('addConfig');
+		return View::make('flume/addConfig');
 	}
 	
 	public function showConfig()
