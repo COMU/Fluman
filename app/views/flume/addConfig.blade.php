@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Apache Flume
+Add Flume Config File
 @stop
 
 @section('content')
@@ -17,19 +17,19 @@ Apache Flume
 
 	</div>
 	<div class="box">
-		<form action="asd" class="ink-form">
+		<form action="{{ URL::to('flume/addConfig') }}" class="ink-form" method="POST">
 			<fieldset>
 			<legend>What Is It Gonna Be?</legend>
 			<div class="control-group">
 				<p class="label">Please select one of these options</p>
 				<ul class="control unstyled">
-					<li><input type="radio" id="rb1" value="" name="rb"><label for="rb1">I want to create configuration file step by step</label></li>
-					<li><input type="radio" id="rb2" value="" name="rb"><label for="rb2">I want to upload my configuration file</label></li>
+					<li><input type="radio" id="rb1" value="rb1" name="rb"><label for="rb1">I want to create configuration file step by step</label></li>
+					<li><input type="radio" id="rb2" value="rb2" name="rb"><label for="rb2">I want to upload my configuration file</label></li>
 				</ul>
 			</div>
-			</fieldset> 
+			</fieldset>
+		  <input class="ink-button blue" type="submit" value="Next Step"> 
 		</form>	
-<button class="ink-button blue">Next Step</button>                    
 	</div>
 
 @stop

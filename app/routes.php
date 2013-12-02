@@ -24,6 +24,8 @@ Route::get('/', array('as' => 'home'), function()
 Route::get('dashboard', array('uses' => 'HomeController@dashboard'));
 Route::get('flume', array('uses' => 'HomeController@showFlume'));
 Route::get('flume/addConfig', array('uses' => 'HomeController@addConfig'));
+Route::post('flume/addConfig', array('as' => 'doaddConfig', 'uses' => 'HomeController@doaddConfig'));
+Route::post('flume/uploadConfig', array('as' => 'uploadConfig', 'uses' => 'HomeController@uploadflumeConfig'));
 Route::get('config', array('uses' => 'HomeController@showConfig'));
 Route::post('config', array('as' => 'doConfig', 'uses' => 'HomeController@doConfig'));
 Route::get('logout', array('as' => 'logout', function () {

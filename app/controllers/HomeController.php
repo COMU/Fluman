@@ -39,8 +39,24 @@ class HomeController extends BaseController {
 	
 	public function addConfig()
 	{
-
 		return View::make('flume/addConfig');
+	}
+	
+	public function doaddConfig()
+	{
+		return View::make('flume/doaddConfig')->with('rb', Input::get('rb'));
+	}
+
+	public function uploadflumeConfig()
+	{
+
+		if (Input::hasFile('config'))
+		{
+		$destinationPath = storage_path() . "/flume/"; 
+		Input::file('config')->move($destinationPath);
+		}
+			
+		return View::make('showFlume');
 	}
 	
 	public function showConfig()
