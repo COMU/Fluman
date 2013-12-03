@@ -18,12 +18,13 @@ class HomeController extends BaseController {
 
 	public function dashboard()
 	{
+		Log::error('Gerçekten yanlış giden bir şey var.');
 		return View::make('dashboard');
 	}
 
 	public function showFlume()
 	{
-		return View::make('showFlume');
+		return View::make('showFlume')->with('flumeConfigs', FlumeConfig::all());
 	}
 	
 	public function showLogin()
@@ -51,12 +52,23 @@ class HomeController extends BaseController {
 	{
 
 		if (Input::hasFile('config'))
-		{
-		$destinationPath = storage_path() . "/flume/"; 
-		Input::file('config')->move($destinationPath);
+		{	
+		$filename = Input::get('name');	
+		$destinationPath = storage_path() . "/flume/";
+		$addConfig = new FlumeConfig;
+		$addConfig->name = $filename;
+		$config_id = $addConfig->id;
+		$addConfig->path = '';
+		$addConfig->isCreated = false;
+		$addConfig->save();
+
+		$config_id = $addConfig->id;
+		$addConfig->path = $destinationPath . $filename . "$config_id" . '.conf';
+		$addConfig->save();
+		Input::file('config')->move($destinationPath, $filename . "$config_id" . '.conf');
 		}
 			
-		return View::make('showFlume');
+		return View::make('showFlume')->with('flumeConfigs', FlumeConfig::all());
 	}
 	
 	public function showConfig()
