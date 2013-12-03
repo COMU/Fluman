@@ -18,7 +18,6 @@ class HomeController extends BaseController {
 
 	public function dashboard()
 	{
-		Log::error('Gerçekten yanlış giden bir şey var.');
 		return View::make('dashboard');
 	}
 
