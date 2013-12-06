@@ -9,7 +9,8 @@ Installation
 ------
 ----------
 
-Just download the code to your ```/var/www``` directory. Open```http://localhost/public``` in your browser.
+Check out INSTALL.md
+
 Default username and password is; ```admin```
 
 Screenshots
