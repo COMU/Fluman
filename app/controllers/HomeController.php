@@ -44,7 +44,8 @@ class HomeController extends BaseController {
 	
 	public function docreateConfig()
 	{
-		return View::make('flume/createConfig');
+		
+		return View::make('flume/docreateConfig')->with('input', Input::all());
 	}
 
 	public function addConfig()

@@ -7,7 +7,7 @@ Create Flume Config File
 @section('content')
 
 <div class="box">
-			{{ Form::open(array('route' => 'doConfig', 'class' => 'ink-form')) }}
+			{{ Form::open(array('route' => 'docreateConfig', 'class' => 'ink-form')) }}
 
 			<div class="control-group required">
 				{{ Form::label('path', 'Name:', array('class' => 'large-20')) }}
@@ -87,7 +87,7 @@ Create Flume Config File
 				<p class="tip">Eg; <code>Channel</code></p>
 			</div>
 			</fieldset>
-			<div class="content-right"><a href="#agent"><button class="ink-button blue">Next Step</button></a></div>
+			<div class="content-right"><a href="#agent"><button class="ink-button blue" type="submit">Next Step</button></a></div>
                 </div>
 </div>
 
