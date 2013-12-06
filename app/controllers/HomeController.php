@@ -37,6 +37,16 @@ class HomeController extends BaseController {
 		}
 	}
 	
+	public function createConfig()
+	{
+		return View::make('flume/createConfig');
+	}
+	
+	public function docreateConfig()
+	{
+		return View::make('flume/createConfig');
+	}
+
 	public function addConfig()
 	{
 		return View::make('flume/addConfig');
