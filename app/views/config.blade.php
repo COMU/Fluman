@@ -6,8 +6,6 @@ Configuration
 
 @section('content')
 
-<div class="box">
-
 	<div class="ink-tabs top">
 		<ul class="tabs-nav">
 			<li><a href="#flume">Flume</a></li>
@@ -53,6 +51,5 @@ Configuration
 		});
 	</script>
 
-</div>
 
 @stop

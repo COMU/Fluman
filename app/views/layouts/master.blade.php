@@ -17,35 +17,44 @@
 		<title>@yield('title', 'Untitled Page')</title>
 	</head>
 	<body>
+		<nav class="ink-navigation hide-small">
+			<ul class="menu horizontal black rounded shadowed">
+				<li class="active">
+					<a href="{{ URL::to('dashboard') }}"><i class="icon-home"></i></a>
+					<button class="ink-for-s ink-for-m ink-button" style="display: none;">
+						<i class="icon-reorder" style="height:auto"></i>
+					</button>
+				</li>
+				<li><a href="{{ URL::to('flume') }}">Flume</a></li>
+				<li><a href="{{ URL::to('config') }}">Configuration</a></li>
+				<li><a href="{{ URL::to('logout') }}">Logout</a></li>
+				<div class="content-right"><span class="ink-label error">@yield('title', 'Untitled Page')</span></div>
+				@section('sidebar')
+				@show
+			</ul>
+		</nav>
+
 		<div class="ink-grid">
 			<div class="column-group gutters">
-				<div class="large-33 medium-33 small-100">
-
-					<header>
-						<h1>
-							Fluman<small>for humans</small>
-						</h1>
-						<nav class="ink-navigation">
-							<ul class="menu vertical black">
-									<li><a href="{{ URL::to('dashboard') }}">Homepage</a></li>
-									<li><a href="{{ URL::to('flume') }}">Flume</a></li>
-									<li><a href="{{ URL::to('config') }}">Configuration</a></li>
-									<li><a href="{{ URL::to('logout') }}">Logout</a></li>
-									@section('sidebar')
-									@show
-							
-							</ul>
-						</nav> 
-					</header>
-				</div>
-				<div class="large-66 medium-66 small-100 content">
-					<h1>@yield('title', 'Untitled Page')</h1>
-
-					@yield('content')
+				<div class="large-100 medium-100 small-100 content">
+					<div class="box" id="content" name="content">
+						@yield('content')
+					</div>
 				</div>
 			</div>
 		</div>
-
+		<footer>
+			<nav class="ink-navigation">
+				<ul class="menu horizontal">
+				<li>
+					<a href="#content"><i class="icon-level-up"></i> Return to top</a>
+					</button>
+				</li>
+					<li><a href="https://github.com/COMU/Fluman/README.md">About</a></li>
+					<li><a href="https://github.com/COMU/Fluman/issues"> Report a bug!</a></li>
+				</ul>
+			</nav>
+		</footer>
 
 			{{ HTML::script('js/ink.min.js') }}
 			{{ HTML::script('js/ink-ui.min.js') }}
