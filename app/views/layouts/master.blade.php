@@ -52,6 +52,7 @@
 						</ul>
 					</nav>
 					</div>
+					@yield('topcontent')
 					<div class="box" id="content" name="content">
 						@yield('content')
 					</div>
