@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Configuration
+Setting
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@ Configuration
 		</ul>
 
 		<div id="flume" class="tabs-content">
-			{{ Form::open(array('route' => 'doConfig', 'class' => 'ink-form')) }}
+			{{ Form::open(array('route' => 'doSetting', 'class' => 'ink-form')) }}
 			<div class="control-group required validation error">
 				{{ Form::label('path', 'Flume Wrapper Script Location:', array('class' => 'large-35')) }}
 				<div class="control">

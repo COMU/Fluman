@@ -1,7 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-Apache Flume
+Config Tool
+@stop
+
+
+@section('breadcrumb')
+<li><a href="#">Flume</a></li>
 @stop
 
 @section('content')

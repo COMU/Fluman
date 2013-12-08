@@ -21,9 +21,9 @@ class HomeController extends BaseController {
 		return View::make('dashboard');
 	}
 
-	public function showFlume()
+	public function configTool()
 	{
-		return View::make('showFlume')->with('flumeConfigs', FlumeConfig::all());
+		return View::make('configTool')->with('flumeConfigs', FlumeConfig::all());
 	}
 	
 	public function showLogin()
@@ -81,14 +81,14 @@ class HomeController extends BaseController {
 		return View::make('showFlume')->with('flumeConfigs', FlumeConfig::all());
 	}
 	
-	public function showConfig()
+	public function showSetting()
 	{
 
 		$getConfig = DB::table('config')->select('flumePath')->first();
-		return View::make('config')->with('flumeLocation', $getConfig->flumePath);
+		return View::make('setting')->with('flumeLocation', $getConfig->flumePath);
 	}
 
-	public function doConfig()
+	public function doSetting()
 	{
 
 		if (file_exists(Input::get('path'))) {
@@ -96,11 +96,11 @@ class HomeController extends BaseController {
 				->where('id', 1)
 				->update(array('flumePath' => Input::get('path')));
 		} else {
-			return Redirect::to('config')->withErrors(Input::get('path'));
+			return Redirect::to('setting')->withErrors(Input::get('path'));
 		}
 		
 		$getConfig = DB::table('config')->select('flumePath')->first();
-		return View::make('config')->with('flumeLocation', $getConfig->flumePath);
+		return View::make('setting')->with('flumeLocation', $getConfig->flumePath);
 	}
 	
 	public function doLogin()
