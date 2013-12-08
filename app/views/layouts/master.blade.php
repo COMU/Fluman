@@ -19,14 +19,20 @@
 	<body>
 		<nav class="ink-navigation hide-small">
 			<ul class="menu horizontal black rounded shadowed">
-				<li class="active">
+				<li>
 					<a href="{{ URL::to('dashboard') }}"><i class="icon-home"></i></a>
 					<button class="ink-for-s ink-for-m ink-button" style="display: none;">
 						<i class="icon-reorder" style="height:auto"></i>
 					</button>
 				</li>
-				<li><a href="{{ URL::to('flume') }}">Flume</a></li>
-				<li><a href="{{ URL::to('config') }}">Configuration</a></li>
+				<li><a href="#">Flume</a>
+                                        <ul class="submenu">
+                                            <li><a href="#">Flow</a></li>
+                                            <li><a href="{{ URL::to('flume/configTool') }}">Config Tool</a></li>
+                                            <li><a href="#">Monitor</a></li>
+					</ul>
+				</li>
+				<li><a href="{{ URL::to('setting') }}">Setting</a></li>
 				<li><a href="{{ URL::to('logout') }}">Logout</a></li>
 				<div class="content-right"><span class="ink-label error">@yield('title', 'Untitled Page')</span></div>
 				@section('sidebar')
@@ -37,6 +43,15 @@
 		<div class="ink-grid">
 			<div class="column-group gutters">
 				<div class="large-100 medium-100 small-100 content">
+					<div class="content-right">
+						<nav class="ink-navigation">
+							<ul class="breadcrumbs">
+								<li><a href="{{ URL::to('dashboard') }}">Homepage</a></li>
+								@yield('breadcrumb')
+								<li class="active"><a href="#">@yield('title', 'Untitled Page')</a></li>
+						</ul>
+					</nav>
+					</div>
 					<div class="box" id="content" name="content">
 						@yield('content')
 					</div>
@@ -48,12 +63,12 @@
 				<ul class="menu horizontal">
 				<li>
 					<a href="#content"><i class="icon-level-up"></i> Return to top</a>
-					</button>
-				</li>
-					<li><a href="https://github.com/COMU/Fluman/README.md">About</a></li>
-					<li><a href="https://github.com/COMU/Fluman/issues"> Report a bug!</a></li>
-				</ul>
-			</nav>
+						</button>
+					</li>
+						<li><a href="https://github.com/COMU/Fluman/README.md">About</a></li>
+						<li><a href="https://github.com/COMU/Fluman/issues"> Report a bug!</a></li>
+					</ul>
+			</nav>	
 		</footer>
 
 			{{ HTML::script('js/ink.min.js') }}
