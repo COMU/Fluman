@@ -1,0 +1,189 @@
+var sources = {
+    "sources": [
+        {
+            "avro": {
+                "channels": "-",
+                "type": "The component type name, needs to be avro",
+                "bind": "hostname or IP address to listen on",
+                "port": "Port # to bind to",
+                "threads": "Maximum number of worker threads to spawn",
+                "selector.type": "-",
+                "selector.": "-",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": "-",
+                "compression-type": "This can be 'none' or 'deflate'. The compression-type must match the compression-type of matching AvroSource",
+                "ssl": "Set this to true to enable SSL encryption. You must also specify a 'keystore' and a 'keystore-password'.",
+                "keystore": "This is the path to a Java keystore file. Required for SSL.",
+                "keystore-password": "The password for the Java keystore. Required for SSL.",
+                "keystore-type": "The type of the Java keystore. This can be JKS or PKCS12."
+            },
+            "thrift": {
+                "channels": "-",
+                "type": "The component type name, needs to be thrift",
+                "bind": "hostname or IP address to listen on",
+                "port": "Port # to bind to",
+                "threads": "Maximum number of worker threads to spawn",
+                "selector.type": "-",
+                "selector.": "-",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": "-"
+            },
+            "exec": {
+                "channels": "-",
+                "selector.type": "replicating or multiplexing",
+                "type": "The component type name, needs to be exec",
+                "command": "The command to execute",
+                "shell": "A shell invocation used to run the command. e.g. /bin/sh -c. Required only for commands relying on shell features like wildcards, back ticks, pipes etc.",
+                "restartThrottle": "Amount of time (in millis) to wait before attempting a restart",
+                "restart": "Whether the executed cmd should be restarted if it dies",
+                "logStdErr": "Whether the command’s stderr should be logged",
+                "batchSize": "The max number of lines to read and send to the channel at a time",
+                "selector.": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": "-"
+            },
+            "jms": {
+                "channels": "-",
+                "type": "The component type name, needs to be jms",
+                "initialContextFactory": "Inital Context Factory, e.g: org.apache.activemq.jndi.ActiveMQInitialContextFactory",
+                "connectionFactory": "The JNDI name the connection factory shoulld appear as",
+                "providerURL": "The JMS provider URL",
+                "destinationName": "Destination name",
+                "destinationType": "Destination type (queue or topic)",
+                "messageSelector": "Message selector to use when creating the consumer",
+                "userName": "Username for the destination/provider",
+                "passwordFile": "File containing the password for the destination/provider",
+                "batchSize": "Number of messages to consume in one batch",
+                "converter.type": "Class to use to convert messages to flume events. See below.",
+                "converter.*": "Converter properties.",
+                "converter.charset": "Default converter only. Charset to use when converting JMS TextMessages to byte arrays."
+            },
+            "spooldir": {
+                "channels": "",
+                "type": "The component type name, needs to be spooldir.",
+                "spoolDir": "The directory from which to read files from.",
+                "fileSuffix": "Suffix to append to completely ingested files",
+                "deletePolicy": "When to delete completed files: never or immediate",
+                "fileHeader": "Whether to add a header storing the filename",
+                "fileHeaderKey": "Header key to use when appending filename to header",
+                "ignorePattern": "Regular expression specifying which files to ignore (skip)",
+                "trackerDir": "Directory to store metadata related to processing of files. If this path is not an absolute path, then it is interpreted as relative to the spoolDir.",
+                "batchSize": "Granularity at which to batch transfer to the channel",
+                "inputCharset": "Character set used by deserializers that treat the input file as text.",
+                "deserializer": "Specify the deserializer used to parse the file into events. Defaults to parsing each line as an event. The class specified must implement EventDeserializer.Builder.",
+                "deserializer.*": "Varies per event deserializer.",
+                "bufferMaxLines": "(Obselete) This option is now ignored.",
+                "bufferMaxLineLength": "(Deprecated) Maximum length of a line in the commit buffer. Use deserializer.maxLineLength instead.",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": ""
+            },
+            "netcat": {
+                "channels": "",
+                "type": "The component type name, needs to be netcat",
+                "bind": "Host name or IP address to bind to",
+                "port": "Port # to bind to",
+                "max-line-length": "Max line length per event body (in bytes)",
+                "ack-every-event": "Respond with an OK for every event received",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": ""
+            },
+            "seq": {
+                "channels": "",
+                "type": "The component type name, needs to be seq",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": "",
+                "batchSize": ""
+            },
+            "syslogtcp": {
+                "channels": "",
+                "type": "The component type name, needs to be syslogtcp",
+                "host": "Host name or IP address to bind to",
+                "port": "Port # to bind to",
+                "eventSize": "Maximum size of a single event line, in bytes",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": ""
+            },
+            "multiport_syslogtcp": {
+                "channels": "",
+                "type": "The component type name, needs to be multiport_syslogtcp",
+                "host": "Host name or IP address to bind to.",
+                "ports": "Space-separated list (one or more) of ports to bind to.",
+                "eventSize": "Maximum size of a single event line, in bytes.",
+                "portHeader": "If specified, the port number will be stored in the header of each event using the header name specified here. This allows for interceptors and channel selectors to customize routing logic based on the incoming port.",
+                "charset.default": "Default character set used while parsing syslog events into strings.",
+                "charset.port.<port>": "Character set is configurable on a per-port basis.",
+                "batchSize": "Maximum number of events to attempt to process per request loop. Using the default is usually fine.",
+                "readBufferSize": "Size of the internal Mina read buffer. Provided for performance tuning. Using the default is usually fine.",
+                "numProcessors": "Number of processors available on the system for use while processing messages. Default is to auto-detect # of CPUs using the Java Runtime API. Mina will spawn 2 request-processing threads per detected CPU, which is often reasonable.",
+                "selector.type": "replicating, multiplexing, or custom",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors.",
+                "interceptors.*": ""
+            },
+            "syslogudp": {
+                "channels": "",
+                "type": "The component type name, needs to be syslogudp",
+                "host": "Host name or IP address to bind to",
+                "port": "Port # to bind to",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": ""
+            },
+            "http": {
+                "type": "The component type name, needs to be http",
+                "port": "The port the source should bind to.",
+                "bind": "The hostname or IP address to listen on",
+                "handler": "The FQCN of the handler class.",
+                "handler.*": "Config parameters for the handler",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": ""
+            },
+            "org.apache.flume.source.avroLegacy.AvroLegacySource": {
+                "channels": "",
+                "type": "The component type name, needs to be org.apache.flume.source.avroLegacy.AvroLegacySource",
+                "host": "The hostname or IP address to bind to",
+                "port": "The port # to listen on",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": ""
+            },
+            "org.apache.flume.source.thriftLegacy.ThriftLegacySource": {
+                "channels": "",
+                "type": "The component type name, needs to be org.apache.flume.source.thriftLegacy.ThriftLegacySource",
+                "host": "The hostname or IP address to bind to",
+                "port": "The port # to listen on",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": ""
+            },
+            "custom": {
+                "channels": "",
+                "type": "The component type name, needs to be your FQCN",
+                "selector.type": "replicating or multiplexing",
+                "selector.*": "Depends on the selector.type value",
+                "interceptors": "Space-separated list of interceptors",
+                "interceptors.*": ""
+            },
+            "org.apache.flume.source.scribe.ScribeSource": {
+                "type": "The component type name, needs to be org.apache.flume.source.scribe.ScribeSource",
+                "port": "Port that Scribe should be connected",
+                "workerThreads": "Handing threads number in Thrift",
+                "selector.type": "",
+                "selector.*": ""
+            }
+        }
+    ]
+};
