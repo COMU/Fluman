@@ -5,7 +5,7 @@ Create Flume Config File
 @stop
 
 @section('content')
-
+<!--
 <div class="box">
 			{{ Form::open(array('route' => 'docreateConfig', 'class' => 'ink-form')) }}
 
@@ -89,6 +89,38 @@ Create Flume Config File
 			</fieldset>
 			<div class="content-right"><a href="#agent"><button class="ink-button blue" type="submit">Next Step</button></a></div>
                 </div>
-</div>
+</div> 
+--!>
 
+
+
+
+			{{ Form::open(array('route' => 'docreateConfig', 'class' => 'ink-form', 'onsubmit' => 'return Ink.UI.FormValidator_1.validate(this);')) }}
+
+			<div class="control-group required">
+				<div class="large-80"></div>
+				<div class="control large-20">
+					{{ Form::text('config_name', Input::old('config_name'), array('placeholder' => 'Provide a name.', 'class' => 'ink-fv-required')) }}
+				</div>
+
+				{{ Form::label('path', 'Select a source:', array('class' => '')) }}
+
+				<select name="sources" id="sources">
+				</select>
+			</div>
+
+@stop
+
+
+@section('footer_scripts')
+{{ HTML::script('js/sources.json') }}
+{{ HTML::script('js/ink.formvalidator.js') }}
+<script>
+
+var s1 = document.getElementById('sources');
+for (var i = 0; i < Object.keys(sources['sources'][0]).length; i++) {
+	    s1.insertAdjacentHTML("beforeend", "<option value='" + Object.keys(sources['sources'][0])[i] + "'>" + Object.keys(sources['sources'][0])[i] + "</option>");
+}
+
+</script>
 @stop
