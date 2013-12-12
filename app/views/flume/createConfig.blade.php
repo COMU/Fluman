@@ -105,8 +105,10 @@ Create Flume Config File
 
 				{{ Form::label('path', 'Select a source:', array('class' => '')) }}
 
-				<select name="sources" id="sources">
+				<select name="sources" id="sources" onchange="onSourceChange(this);">
 				</select>
+				<div id="properties" style="visibility: hidden;">
+				</div>
 			</div>
 
 @stop
@@ -122,5 +124,21 @@ for (var i = 0; i < Object.keys(sources['sources'][0]).length; i++) {
 	    s1.insertAdjacentHTML("beforeend", "<option value='" + Object.keys(sources['sources'][0])[i] + "'>" + Object.keys(sources['sources'][0])[i] + "</option>");
 }
 
+
+function onSourceChange(target){	  
+	
+	var p1 = document.getElementById('properties');
+	for (var i = 0; i < Object.keys(sources['sources'][0][target.value]).length; i++) {
+		    p1.insertAdjacentHTML("beforeend", "<p>" + Object.keys(sources['sources'][0][target.value])[i]  + "</p>: <input type='text' name='"+   Object.keys(sources['sources'][0][target.value])[i] +"'></input>");
+	}
+
+	p1.style.visibility = 'visible';
+
+}
+
+
+for (var i = 0; i < data.avro.length; i++) {
+    d1.insertAdjacentHTML("beforeend", "<option value='" + data.avro[i].name + "'>");
+}
 </script>
 @stop
