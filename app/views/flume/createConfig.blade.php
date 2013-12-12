@@ -125,9 +125,10 @@ for (var i = 0; i < Object.keys(sources['sources'][0]).length; i++) {
 }
 
 
-function onSourceChange(target){	  
-	
+function onSourceChange(target){	 
+
 	var p1 = document.getElementById('properties');
+	document.getElementById("properties").innerHTML = "";
 	for (var i = 0; i < Object.keys(sources['sources'][0][target.value]).length; i++) {
 		    p1.insertAdjacentHTML("beforeend", "<p>" + Object.keys(sources['sources'][0][target.value])[i]  + "</p>: <input type='text' name='"+   Object.keys(sources['sources'][0][target.value])[i] +"'></input>");
 	}
