@@ -12,6 +12,7 @@
 */
 
 
+Route::get('/', array('uses' => 'HomeController@showLogin'));
 
 Route::group(array('before' => 'auth'), function()
 {
@@ -29,7 +30,6 @@ Route::post('flume/addConfig', array('as' => 'doaddConfig', 'uses' => 'HomeContr
 Route::post('flume/createConfig', array('as' => 'docreateConfig', 'uses' => 'HomeController@docreateConfig'));
 Route::get('flume/createConfig', array('uses' => 'HomeController@createConfig'));
 Route::post('flume/uploadConfig', array('as' => 'uploadConfig', 'uses' => 'HomeController@uploadflumeConfig'));
-
 Route::get('setting', array('uses' => 'HomeController@showSetting'));
 Route::post('setting', array('as' => 'doSetting', 'uses' => 'HomeController@doSetting'));
 Route::get('logout', array('as' => 'logout', function () {
@@ -40,7 +40,6 @@ Route::get('logout', array('as' => 'logout', function () {
 }));
 
 });
-
 
 Route::get('login', array('uses' => 'HomeController@showLogin'));
 Route::post('login', array('uses' => 'HomeController@doLogin'));
