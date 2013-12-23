@@ -6,10 +6,10 @@
 			<meta name="HandheldFriendly" content="True">
 			<meta name="MobileOptimized" content="320">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-			{{ HTML::style('css/ink.css') }}
+			{{ HTML::style('css/ink-min.css') }}
 			{{ HTML::style('css/custom.css') }}
 			<!--[if IE 7 ]>
-				{{ HTML::style('css/ink-i7.css') }}
+				{{ HTML::style('css/ink-i7-min.css') }}
 			<![endif]-->
 		@section('head')
 		@show
