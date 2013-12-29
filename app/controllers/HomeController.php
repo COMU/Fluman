@@ -84,7 +84,7 @@ class HomeController extends BaseController {
 	public function showSetting()
 	{
 
-		$getConfig = DB::table('config')->select('flumePath')->first();
+		$getConfig = DB::table('setting')->select('flumePath')->first();
 		return View::make('setting')->with('flumeLocation', $getConfig->flumePath);
 	}
 
@@ -99,7 +99,7 @@ class HomeController extends BaseController {
 			return Redirect::to('setting')->withErrors(Input::get('path'));
 		}
 		
-		$getConfig = DB::table('config')->select('flumePath')->first();
+		$getConfig = DB::table('setting')->select('flumePath')->first();
 		return View::make('setting')->with('flumeLocation', $getConfig->flumePath);
 	}
 	

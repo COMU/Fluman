@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConfigTable extends Migration {
+class CreateSettingTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,10 +11,13 @@ class CreateConfigTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('config', function($table)
+		Schema::create('setting', function($table)
 		{
 			$table->increments('id');
 			$table->string('flumePath', 256);
+			$table->string('flumeVer', 8);
+			$table->timestamps();
+			
 		});
 	}
 
@@ -25,7 +28,7 @@ class CreateConfigTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('config');
+		Schema::drop('setting');
 	}
 
 }
