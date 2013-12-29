@@ -84,20 +84,21 @@ class HomeController extends BaseController {
 	public function showSetting()
 	{
 
-		$getConfig = DB::table('setting')->select('flumePath')->first();
-		return View::make('setting')->with('flumeLocation', $getConfig->flumePath);
+		$getSetting = Setting::all()->first();
+		return View::make('setting')->with('Setting', $getSetting);
 	}
 
 	public function doSetting()
 	{
 
 		if (file_exists(Input::get('path'))) {
-			DB::table('config')
+			DB::table('setting')
 				->where('id', 1)
 				->update(array('flumePath' => Input::get('path')));
 		} else {
 			return Redirect::to('setting')->withErrors(Input::get('path'));
 		}
+		
 		
 		$getConfig = DB::table('setting')->select('flumePath')->first();
 		return View::make('setting')->with('flumeLocation', $getConfig->flumePath);

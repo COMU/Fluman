@@ -20,10 +20,12 @@ Setting
 				<div class="control">
 					{{ Form::text('path', Input::old('path'), array('placeholder' => '/usr/bin/flume-ng')) }}
 				</div>
-				<p class="tip">Current Location: <b>{{{ $flumeLocation }}}</b></p>
+				<p class="tip">Current Location: <b>{{{ $Setting->flumePath }}}</b></p>
+				<p class="tip" id="flumeVersion">Current Version: {{{ $Setting->flumeVer }}}</p>
 			</div>
-			{{ Form::submit('Save') }}
+			{{ Form::submit('Save', array('class' => 'ink-button blue')) }}
 			{{ Form::close() }}
+			<button onclick="checkVersion()" class="ink-button blue">Check Version</button>
 			<hr>
 			<a href="flume/addConfig"><button class="ink-button red">Create a Flume Agent Configuration File</button></a>
 		</div>
@@ -36,20 +38,31 @@ Setting
  
 	</div>
 
+
+
+
+@stop
+
+
+@section('footer_scripts')
 	<script>
-		Ink.requireModules( ['Ink.UI.Tabs_1'], function(Tabs){
-			new Tabs( '.ink-tabs',{
-				disabled: ['#users', '#preferences'],
-				active: '#flume',
-				onBeforeChange: function(tab){
-					console.log('beforeChange', tab);
-				},
-				onChange: function(tab){
-					console.log('Changed', tab);
+		function checkVersion() {
+			var xmlHttp = null;
+			xmlHttp = new XMLHttpRequest();
+			xmlHttp.open("GET","{{ URL::to('api/version') }}",true);
+			xmlHttp.onreadystatechange=function() {
+				if (xmlHttp.readyState==4) {
+					if (xmlHttp.status!=404) {
+						obj = JSON.parse(xmlHttp.responseText);
+						document.getElementById("flumeVersion").innerHTML = "";
+						document.getElementById("flumeVersion").innerHTML = "Current Version: " + obj.version;
+					} else {
+						alert("Error");
+					}
 				}
-				});
-		});
+			}
+			xmlHttp.send(null);
+		}
 	</script>
-
-
+	
 @stop

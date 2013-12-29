@@ -82,12 +82,6 @@ Config Tool
         </div>
     </div>
 
-
-
-
-</div>
-<div class="content-right">
-<h5>Showcase</h5>
 </div>
 
 <div class="box">
