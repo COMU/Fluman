@@ -18,15 +18,8 @@ Config Tool
     <div class="column-group gutters">
         <div class="large-33 medium-30 small-100">
             <div class="ink-dropdown green large-100" style="height: 300px; overflow-y: scroll;">
-                <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="">
+                <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="sources">
                     <li class="heading active">Sources</li>
-                    <li class="separator-above active"><a href="#">Exec</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
                 </ul>
                 <br>
             </div>
@@ -34,15 +27,8 @@ Config Tool
         </div>
         <div class="large-33 medium-30 small-100">
             <div class="ink-dropdown blue large-100" style="height: 300px; overflow-y: scroll;">
-                <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="">
+                <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="channels">
                     <li class="heading active">Channels</li>
-                    <li class="separator-above active"><a href="#">Memory</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
                 </ul>
                 <br>
             </div>
@@ -50,15 +36,8 @@ Config Tool
         </div>
         <div class="large-33 medium-30 small-100">
             <div class="ink-dropdown red large-100" style="height: 300px; overflow-y: scroll;">
-                <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="">
+                <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="sinks">
                     <li class="heading active">Sinks</li>
-                    <li class="separator-above active"><a href="#">File Roll</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
-                    <li class="separator-above"><a href="#">Option</a></li>
                 </ul>
                 <br>
             </div>
@@ -112,4 +91,17 @@ Config Tool
 @stop
 
 @section('footer_scripts')
+{{ HTML::script('js/all.json') }}
+<script>
+
+boxes = ["sources","channels","sinks"]
+for (var i=0;i<boxes.length;i++) {
+	box = document.getElementById(boxes[i])
+	for(var key in all[boxes[i]]) {
+      	var liElement = "<li class=\"separator-above\"><a href=\"#\">" + key + "</a></li>"
+      	box.insertAdjacentHTML("beforeend",liElement);
+    }
+}
+
+</script>
 @stop

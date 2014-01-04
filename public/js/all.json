@@ -1,0 +1,1672 @@
+var all = {
+    "channels": {
+        "memory-channel": {
+            "capacity": {
+                "default": "100", 
+                "required": 0, 
+                "description": "The maximum number of events stored in the channel"
+            }, 
+            "transactionCapacity": {
+                "default": "100", 
+                "required": 0, 
+                "description": "The maximum number of events the channel will take from a source or give to a\nsink per transaction"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "keep-alive": {
+                "default": "3", 
+                "required": 0, 
+                "description": "Timeout in seconds for adding or removing an event"
+            }, 
+            "byteCapacityBufferPercentage": {
+                "default": "20", 
+                "required": 0, 
+                "description": "Defines the percent of buffer between byteCapacity and the estimated total size\nof all events in the channel, to account for data in headers. See below."
+            }, 
+            "byteCapacity": {
+                "default": "see description", 
+                "required": 0, 
+                "description": "None"
+            }
+        }, 
+        "custom-channel": {
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The component type name, needs to be a FQCN"
+            }
+        }, 
+        "file-channel": {
+            "dataDirs": {
+                "default": "~/.flume/file-channel/data", 
+                "required": 0, 
+                "description": "The directory where log files will be stored"
+            }, 
+            "transactionCapacity": {
+                "default": "1000", 
+                "required": 0, 
+                "description": "The maximum size of transaction supported by the channel"
+            }, 
+            "checkpoint-timeout": {
+                "default": "600", 
+                "required": 0, 
+                "description": "Expert: Amount of time (in sec) to wait for a checkpoint"
+            }, 
+            "encryption.activeKey": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Key name used to encrypt new data"
+            }, 
+            "capacity": {
+                "default": "1000000", 
+                "required": 0, 
+                "description": "Maximum capacity of the channel"
+            }, 
+            "encryption.keyProvider": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Key provider type, supported types: JCEKSFILE"
+            }, 
+            "keep-alive": {
+                "default": "3", 
+                "required": 0, 
+                "description": "Amount of time (in sec) to wait for a put operation"
+            }, 
+            "minimumRequiredSpace": {
+                "default": "524288000", 
+                "required": 0, 
+                "description": "Minimum Required free space (in bytes). To avoid data corruption, File Channel stops accepting take/put requests when free space drops below this value"
+            }, 
+            "encryption.cipherProvider": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Cipher provider type, supported types: AESCTRNOPADDING"
+            }, 
+            "useDualCheckpoints": {
+                "default": "false", 
+                "required": 0, 
+                "description": "None"
+            }, 
+            "checkpointDir": {
+                "default": "~/.flume/file-channel/checkpoint", 
+                "required": 0, 
+                "description": "The directory where checkpoint file will be stored"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "backupCheckpointDir": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "None"
+            }, 
+            "encyption.keyProvider.keys.*.passwordFile": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Path to the optional key password file"
+            }, 
+            "maxFileSize": {
+                "default": "2146435071", 
+                "required": 0, 
+                "description": "Max size (in bytes) of a single log file"
+            }, 
+            "encryption.keyProvider.keyStoreFile": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Path to the keystore file"
+            }, 
+            "encryption.keyProvider.keys": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "List of all keys (e.g. history of the activeKey setting)"
+            }, 
+            "checkpointInterval": {
+                "default": "30000", 
+                "required": 0, 
+                "description": "Amount of time (in millis) between checkpoints"
+            }, 
+            "write-timeout": {
+                "default": "3", 
+                "required": 0, 
+                "description": "Amount of time (in sec) to wait for a write operation"
+            }, 
+            "encrpytion.keyProvider.keyStorePasswordFile": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Path to the keystore password file"
+            }, 
+            "use-log-replay-v1": {
+                "default": "false", 
+                "required": 0, 
+                "description": "Expert: Use old replay logic"
+            }, 
+            "use-fast-replay": {
+                "default": "false", 
+                "required": 0, 
+                "description": "Expert: Replay without using queue"
+            }
+        }, 
+        "jdbc-channel": {
+            "driver.class": {
+                "default": "org.apache.derby.jdbc.EmbeddedDriver", 
+                "required": 0, 
+                "description": "Class for vendor&#8217;s JDBC driver"
+            }, 
+            "create.foreignkey": {
+                "default": "true", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "create.index": {
+                "default": "true", 
+                "required": 0, 
+                "description": "Create indexes to speed up lookups"
+            }, 
+            "db.type": {
+                "default": "DERBY", 
+                "required": 0, 
+                "description": "Database vendor, needs to be DERBY."
+            }, 
+            "maximum.capacity": {
+                "default": "0 (unlimited)", 
+                "required": 0, 
+                "description": "Max number of events in the channel"
+            }, 
+            "create.schema": {
+                "default": "true", 
+                "required": 0, 
+                "description": "If true, then creates db schema if not there"
+            }, 
+            "transaction.isolation": {
+                "default": "&#8220;READ_COMMITTED&#8221;", 
+                "required": 0, 
+                "description": "Isolation level for db session READ_UNCOMMITTED,\nREAD_COMMITTED, SERIALIZABLE, REPEATABLE_READ"
+            }, 
+            "driver.url": {
+                "default": "(constructed from other properties)", 
+                "required": 0, 
+                "description": "JDBC connection URL"
+            }, 
+            "sysprop.user.home": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "Home path to store embedded Derby database"
+            }, 
+            "connection.properties.file": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "JDBC Connection property file path"
+            }, 
+            "maximum.connections": {
+                "default": "10", 
+                "required": 0, 
+                "description": "Max connections allowed to db"
+            }, 
+            "db.password": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "password for db connection"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "sysprop.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "DB Vendor specific properties"
+            }, 
+            "db.username": {
+                "default": "&#8220;sa&#8221;", 
+                "required": 0, 
+                "description": "User id for db connection"
+            }
+        }, 
+        "pseudo-transaction-channel": {
+            "capacity": {
+                "default": "50", 
+                "required": 0, 
+                "description": "The max number of events stored in the channel"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "keep-alive": {
+                "default": "3", 
+                "required": 0, 
+                "description": "Timeout in seconds for adding or removing an event"
+            }
+        }
+    }, 
+    "sources": {
+        "legacy-sources": {
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "host": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The hostname or IP address to bind to"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The port # to listen on"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "netcat-source": {
+            "ack-every-event": {
+                "default": "true", 
+                "required": 0, 
+                "description": "Respond with an &#8220;OK&#8221; for every event received"
+            }, 
+            "bind": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Host name or IP address to bind to"
+            }, 
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "max-line-length": {
+                "default": "512", 
+                "required": 0, 
+                "description": "Max line length per event body (in bytes)"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Port # to bind to"
+            }, 
+            "selector.type": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "avro": {
+            "deserializer.schemaType": {
+                "default": "HASH", 
+                "required": 0, 
+                "description": "None"
+            }
+        }, 
+        "syslog-udp-source": {
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "host": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Host name or IP address to bind to"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Port # to bind to"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "avro-source": {
+            "keystore": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "This is the path to a Java keystore file. Required for SSL."
+            }, 
+            "keystore-type": {
+                "default": "JKS", 
+                "required": 0, 
+                "description": "The type of the Java keystore. This can be &#8220;JKS&#8221; or &#8220;PKCS12&#8221;."
+            }, 
+            "ssl": {
+                "default": "false", 
+                "required": 0, 
+                "description": "Set this to true to enable SSL encryption. You must also specify a &#8220;keystore&#8221; and a &#8220;keystore-password&#8221;."
+            }, 
+            "bind": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "hostname or IP address to listen on"
+            }, 
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "compression-type": {
+                "default": "none", 
+                "required": 0, 
+                "description": "This can be &#8220;none&#8221; or &#8220;deflate&#8221;.  The compression-type must match the compression-type of matching AvroSource"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "keystore-password": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "The password for the Java keystore. Required for SSL."
+            }, 
+            "threads": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Maximum number of worker threads to spawn"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Port # to bind to"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "event-deserializers": {
+            "deserializer.maxLineLength": {
+                "default": "2048", 
+                "required": 0, 
+                "description": "Maximum number of characters to include in a single event.\nIf a line exceeds this length, it is truncated, and the\nremaining characters on the line will appear in a\nsubsequent event."
+            }, 
+            "deserializer.outputCharset": {
+                "default": "UTF-8", 
+                "required": 0, 
+                "description": "Charset to use for encoding events put into the channel."
+            }
+        }, 
+        "jms-source": {
+            "userName": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Username for the destination/provider"
+            }, 
+            "connectionFactory": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The JNDI name the connection factory shoulld appear as"
+            }, 
+            "converter.type": {
+                "default": "DEFAULT", 
+                "required": 0, 
+                "description": "Class to use to convert messages to flume events. See below."
+            }, 
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "Number of messages to consume in one batch"
+            }, 
+            "converter.charset": {
+                "default": "UTF-8", 
+                "required": 0, 
+                "description": "Default converter only. Charset to use when converting JMS TextMessages to byte arrays."
+            }, 
+            "destinationName": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Destination name"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "initialContextFactory": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Inital Context Factory, e.g: org.apache.activemq.jndi.ActiveMQInitialContextFactory"
+            }, 
+            "messageSelector": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Message selector to use when creating the consumer"
+            }, 
+            "passwordFile": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "File containing the password for the destination/provider"
+            }, 
+            "destinationType": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Destination type (queue or topic)"
+            }, 
+            "providerURL": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The JMS provider URL"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "converter.*": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Converter properties."
+            }
+        }, 
+        "thrift-source": {
+            "bind": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "hostname or IP address to listen on"
+            }, 
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "threads": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Maximum number of worker threads to spawn"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Port # to bind to"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "http-source": {
+            "bind": {
+                "default": "0.0.0.0", 
+                "required": 0, 
+                "description": "The hostname or IP address to listen on"
+            }, 
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "selector.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "handler": {
+                "default": "org.apache.flume.source.http.JSONHandler", 
+                "required": 0, 
+                "description": "The FQCN of the handler class."
+            }, 
+            "handler.*": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Config parameters for the handler"
+            }, 
+            "type": {
+                "default": "&nbsp;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The port the source should bind to."
+            }, 
+            "selector.type": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "scribe-source": {
+            "workerThreads": {
+                "default": "5", 
+                "required": 0, 
+                "description": "Handing threads number in Thrift"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "1499", 
+                "required": 0, 
+                "description": "Port that Scribe should be connected"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "multiport-syslog-tcp-source": {
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors."
+            }, 
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "Maximum number of events to attempt to process per request loop. Using the default is usually fine."
+            }, 
+            "readBufferSize": {
+                "default": "1024", 
+                "required": 0, 
+                "description": "Size of the internal Mina read buffer. Provided for performance tuning. Using the default is usually fine."
+            }, 
+            "charset.port.&lt;port&gt;": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Character set is configurable on a per-port basis."
+            }, 
+            "numProcessors": {
+                "default": "(auto-detected)", 
+                "required": 0, 
+                "description": "Number of processors available on the system for use while processing messages. Default is to auto-detect # of CPUs using the Java Runtime API. Mina will spawn 2 request-processing threads per detected CPU, which is often reasonable."
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "None"
+            }, 
+            "host": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Host name or IP address to bind to."
+            }, 
+            "portHeader": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "If specified, the port number will be stored in the header of each event using the header name specified here. This allows for interceptors and channel selectors to customize routing logic based on the incoming port."
+            }, 
+            "selector.type": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "replicating, multiplexing, or custom"
+            }, 
+            "eventSize": {
+                "default": "2500", 
+                "required": 0, 
+                "description": "Maximum size of a single event line, in bytes."
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "ports": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Space-separated list (one or more) of ports to bind to."
+            }, 
+            "charset.default": {
+                "default": "UTF-8", 
+                "required": 0, 
+                "description": "Default character set used while parsing syslog events into strings."
+            }
+        }, 
+        "custom-source": {
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The component type name, needs to be your FQCN"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "None"
+            }
+        }, 
+        "spooling-directory-source": {
+            "ignorePattern": {
+                "default": "^$", 
+                "required": 0, 
+                "description": "Regular expression specifying which files to ignore (skip)"
+            }, 
+            "fileHeader": {
+                "default": "false", 
+                "required": 0, 
+                "description": "Whether to add a header storing the filename"
+            }, 
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "Granularity at which to batch transfer to the channel"
+            }, 
+            "fileSuffix": {
+                "default": ".COMPLETED", 
+                "required": 0, 
+                "description": "Suffix to append to completely ingested files"
+            }, 
+            "inputCharset": {
+                "default": "UTF-8", 
+                "required": 0, 
+                "description": "Character set used by deserializers that treat the input file as text."
+            }, 
+            "bufferMaxLines": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "(Obselete) This option is now ignored."
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "spoolDir": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The directory from which to read files from."
+            }, 
+            "deletePolicy": {
+                "default": "never", 
+                "required": 0, 
+                "description": "None"
+            }, 
+            "fileHeaderKey": {
+                "default": "file", 
+                "required": 0, 
+                "description": "Header key to use when appending filename to header"
+            }, 
+            "deserializer": {
+                "default": "LINE", 
+                "required": 0, 
+                "description": "None"
+            }, 
+            "trackerDir": {
+                "default": ".flumespool", 
+                "required": 0, 
+                "description": "Directory to store metadata related to processing of files.\nIf this path is not an absolute path, then it is interpreted as relative to the spoolDir."
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "bufferMaxLineLength": {
+                "default": "5000", 
+                "required": 0, 
+                "description": "(Deprecated) Maximum length of a line in the commit buffer. Use deserializer.maxLineLength instead."
+            }, 
+            "selector.type": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }, 
+            "deserializer.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "Varies per event deserializer."
+            }
+        }, 
+        "blobhandler": {
+            "handler": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "handler.maxBlobLength": {
+                "default": "100000000", 
+                "required": 0, 
+                "description": "The maximum number of bytes to read and buffer for a given request"
+            }
+        }, 
+        "sequence-generator-source": {
+            "batchSize": {
+                "default": "1", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "line": {
+            "deserializer.maxLineLength": {
+                "default": "2048", 
+                "required": 0, 
+                "description": "Maximum number of characters to include in a single event.\nIf a line exceeds this length, it is truncated, and the\nremaining characters on the line will appear in a\nsubsequent event."
+            }, 
+            "deserializer.outputCharset": {
+                "default": "UTF-8", 
+                "required": 0, 
+                "description": "Charset to use for encoding events put into the channel."
+            }
+        }, 
+        "avro-legacy-source": {
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "host": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The hostname or IP address to bind to"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The port # to listen on"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "blobdeserializer": {
+            "deserializer": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "deserializer.maxBlobLength": {
+                "default": "100000000", 
+                "required": 0, 
+                "description": "The maximum number of bytes to read and buffer for a given request"
+            }
+        }, 
+        "syslog-sources": {
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "host": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Host name or IP address to bind to"
+            }, 
+            "eventSize": {
+                "default": "2500", 
+                "required": 0, 
+                "description": "Maximum size of a single event line, in bytes"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Port # to bind to"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "syslog-tcp-source": {
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "host": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Host name or IP address to bind to"
+            }, 
+            "eventSize": {
+                "default": "2500", 
+                "required": 0, 
+                "description": "Maximum size of a single event line, in bytes"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Port # to bind to"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "thrift-legacy-source": {
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "host": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The hostname or IP address to bind to"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The port # to listen on"
+            }, 
+            "selector.type": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }
+        }, 
+        "exec-source": {
+            "shell": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "A shell invocation used to run the command.  e.g. /bin/sh -c. Required only for commands relying on shell features like wildcards, back ticks, pipes etc."
+            }, 
+            "batchSize": {
+                "default": "20", 
+                "required": 0, 
+                "description": "The max number of lines to read and send to the channel at a time"
+            }, 
+            "interceptors": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Space-separated list of interceptors"
+            }, 
+            "interceptors.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "selector.type": {
+                "default": "replicating", 
+                "required": 0, 
+                "description": "replicating or multiplexing"
+            }, 
+            "channels": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "selector.*": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "Depends on the selector.type value"
+            }, 
+            "command": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The command to execute"
+            }, 
+            "restartThrottle": {
+                "default": "10000", 
+                "required": 0, 
+                "description": "Amount of time (in millis) to wait before attempting a restart"
+            }, 
+            "logStdErr": {
+                "default": "false", 
+                "required": 0, 
+                "description": "Whether the command&#8217;s stderr should be logged"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "restart": {
+                "default": "false", 
+                "required": 0, 
+                "description": "Whether the executed cmd should be restarted if it dies"
+            }
+        }
+    }, 
+    "sinks": {
+        "file-roll-sink": {
+            "sink.rollInterval": {
+                "default": "30", 
+                "required": 0, 
+                "description": "Roll the file every 30 seconds. Specifying 0 will disable rolling and cause all events to be written to a single file."
+            }, 
+            "sink.directory": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The directory where files will be stored"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "sink.serializer": {
+                "default": "TEXT", 
+                "required": 0, 
+                "description": "None"
+            }
+        }, 
+        "custom-sink": {
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The component type name, needs to be your FQCN"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "hbasesinks": {
+            "kerberosPrincipal": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Kerberos user principal for accessing secure HBase"
+            }, 
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "Number of events to be written per txn."
+            }, 
+            "kerberosKeytab": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Kerberos keytab for accessing secure HBase"
+            }, 
+            "serializer.*": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Properties to be passed to the serializer."
+            }, 
+            "serializer": {
+                "default": "org.apache.flume.sink.hbase.SimpleHbaseEventSerializer", 
+                "required": 0, 
+                "description": "Default increment column = &#8220;iCol&#8221;, payload column = &#8220;pCol&#8221;."
+            }, 
+            "columnFamily": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The column family in Hbase to write to."
+            }, 
+            "table": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The name of the table in Hbase to write to."
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "hdfs-sink": {}, 
+        "logger-sink": {
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "irc-sink": {
+            "name": {
+                "default": "&nbsp;", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "hostname": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The hostname or IP address to connect to"
+            }, 
+            "chan": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "channel"
+            }, 
+            "nick": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Nick name"
+            }, 
+            "splitlines": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "(boolean)"
+            }, 
+            "user": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "User name"
+            }, 
+            "password": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "User password"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "6667", 
+                "required": 0, 
+                "description": "The port number of remote host to connect"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }, 
+            "splitchars": {
+                "default": "n", 
+                "required": 0, 
+                "description": "line separator (if you were to enter the default value\ninto the config file, then you would need to escape the\nbackslash, like this: &#8220;\\n&#8221;)"
+            }
+        }, 
+        "thrift-sink": {
+            "hostname": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The hostname or IP address to bind to."
+            }, 
+            "connection-reset-interval": {
+                "default": "none", 
+                "required": 0, 
+                "description": "Amount of time (s) before the connection to the next hop is reset. This will force the Thrift Sink to reconnect to the next hop. This will allow the sink to connect to hosts behind a hardware load-balancer when news hosts are added without having to restart the agent."
+            }, 
+            "batch-size": {
+                "default": "100", 
+                "required": 0, 
+                "description": "number of event to batch together for send."
+            }, 
+            "request-timeout": {
+                "default": "20000", 
+                "required": 0, 
+                "description": "Amount of time (ms) to allow for requests after the first."
+            }, 
+            "connect-timeout": {
+                "default": "20000", 
+                "required": 0, 
+                "description": "Amount of time (ms) to allow for the first (handshake) request."
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The port # to listen on."
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "null-sink": {
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "morphlinesolrsink": {
+            "morphlineId": {
+                "default": "null", 
+                "required": 0, 
+                "description": "Optional name used to identify a morphline if there are multiple morphlines in a morphline config file"
+            }, 
+            "batchSize": {
+                "default": "1000", 
+                "required": 0, 
+                "description": "The maximum number of events to take per flume transaction."
+            }, 
+            "handlerClass": {
+                "default": "org.apache.flume.sink.solr.morphline.MorphlineHandlerImpl", 
+                "required": 0, 
+                "description": "The FQCN of a class implementing org.apache.flume.sink.solr.morphline.MorphlineHandler"
+            }, 
+            "batchDurationMillis": {
+                "default": "1000", 
+                "required": 0, 
+                "description": "The maximum duration per flume transaction (ms). The transaction commits after this duration or when batchSize is exceeded, whichever comes first."
+            }, 
+            "morphlineFile": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "hbasesink": {
+            "kerberosPrincipal": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Kerberos user principal for accessing secure HBase"
+            }, 
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "Number of events to be written per txn."
+            }, 
+            "kerberosKeytab": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Kerberos keytab for accessing secure HBase"
+            }, 
+            "serializer.*": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Properties to be passed to the serializer."
+            }, 
+            "serializer": {
+                "default": "org.apache.flume.sink.hbase.SimpleHbaseEventSerializer", 
+                "required": 0, 
+                "description": "Default increment column = &#8220;iCol&#8221;, payload column = &#8220;pCol&#8221;."
+            }, 
+            "columnFamily": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The column family in Hbase to write to."
+            }, 
+            "table": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The name of the table in Hbase to write to."
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "avro-sink": {
+            "truststore-password": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "The password for the specified truststore."
+            }, 
+            "reset-connection-interval": {
+                "default": "none", 
+                "required": 0, 
+                "description": "Amount of time (s) before the connection to the next hop is reset. This will force the Avro Sink to reconnect to the next hop. This will allow the sink to connect to hosts behind a hardware load-balancer when news hosts are added without having to restart the agent."
+            }, 
+            "hostname": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The hostname or IP address to bind to."
+            }, 
+            "compression-level": {
+                "default": "6", 
+                "required": 0, 
+                "description": "The level of compression to compress event. 0 = no compression and 1-9 is compression.  The higher the number the more compression"
+            }, 
+            "compression-type": {
+                "default": "none", 
+                "required": 0, 
+                "description": "This can be &#8220;none&#8221; or &#8220;deflate&#8221;.  The compression-type must match the compression-type of matching AvroSource"
+            }, 
+            "ssl": {
+                "default": "false", 
+                "required": 0, 
+                "description": "Set to true to enable SSL for this AvroSink. When configuring SSL, you can optionally set a &#8220;truststore&#8221;, &#8220;truststore-password&#8221;, &#8220;truststore-type&#8221;, and specify whether to &#8220;trust-all-certs&#8221;."
+            }, 
+            "truststore": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "The path to a custom Java truststore file. Flume uses the certificate authority information in this file to determine whether the remote Avro Source&#8217;s SSL authentication credentials should be trusted. If not specified, the default Java JSSE certificate authority files (typically &#8220;jssecacerts&#8221; or &#8220;cacerts&#8221; in the Oracle JRE) will be used."
+            }, 
+            "trust-all-certs": {
+                "default": "false", 
+                "required": 0, 
+                "description": "If this is set to true, SSL server certificates for remote servers (Avro Sources) will not be checked. This should NOT be used in production because it makes it easier for an attacker to execute a man-in-the-middle attack and &#8220;listen in&#8221; on the encrypted connection."
+            }, 
+            "batch-size": {
+                "default": "100", 
+                "required": 0, 
+                "description": "number of event to batch together for send."
+            }, 
+            "truststore-type": {
+                "default": "JKS", 
+                "required": 0, 
+                "description": "The type of the Java truststore. This can be &#8220;JKS&#8221; or other supported Java truststore type."
+            }, 
+            "request-timeout": {
+                "default": "20000", 
+                "required": 0, 
+                "description": "Amount of time (ms) to allow for requests after the first."
+            }, 
+            "connect-timeout": {
+                "default": "20000", 
+                "required": 0, 
+                "description": "Amount of time (ms) to allow for the first (handshake) request."
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "port": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The port # to listen on."
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "asynchbasesink": {
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "Number of events to be written per txn."
+            }, 
+            "timeout": {
+                "default": "60000", 
+                "required": 0, 
+                "description": "The length of time (in milliseconds) the sink waits for acks from hbase for\nall events in a transaction."
+            }, 
+            "zookeeperQuorum": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "None"
+            }, 
+            "serializer.*": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Properties to be passed to the serializer."
+            }, 
+            "serializer": {
+                "default": "org.apache.flume.sink.hbase.SimpleAsyncHbaseEventSerializer", 
+                "required": 0, 
+                "description": "&nbsp;"
+            }, 
+            "columnFamily": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The column family in Hbase to write to."
+            }, 
+            "table": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "The name of the table in Hbase to write to."
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "znodeParent": {
+                "default": "/hbase", 
+                "required": 0, 
+                "description": "None"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }, 
+        "elasticsearchsink": {
+            "indexName": {
+                "default": "flume", 
+                "required": 0, 
+                "description": "The name of the index which the date will be appended to. Example &#8216;flume&#8217; -&gt; &#8216;flume-yyyy-MM-dd&#8217;"
+            }, 
+            "indexType": {
+                "default": "logs", 
+                "required": 0, 
+                "description": "The type to index the document to, defaults to &#8216;log&#8217;"
+            }, 
+            "clusterName": {
+                "default": "elasticsearch", 
+                "required": 0, 
+                "description": "Name of the ElasticSearch cluster to connect to"
+            }, 
+            "batchSize": {
+                "default": "100", 
+                "required": 0, 
+                "description": "Number of events to be written per txn."
+            }, 
+            "serializer.*": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "Properties to be passed to the serializer."
+            }, 
+            "hostNames": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "Comma separated list of hostname:port, if the port is not present the default port &#8216;9300&#8217; will be used"
+            }, 
+            "serializer": {
+                "default": "org.apache.flume.sink.elasticsearch.ElasticSearchLogStashEventSerializer", 
+                "required": 0, 
+                "description": "The ElasticSearchIndexRequestBuilderFactory or ElasticSearchEventSerializer to use. Implementations of\neither class are accepted but ElasticSearchIndexRequestBuilderFactory is preferred."
+            }, 
+            "ttl": {
+                "default": "&#8211;", 
+                "required": 0, 
+                "description": "TTL in days, when set will cause the expired documents to be deleted automatically,\nif not set documents will never be automatically deleted"
+            }, 
+            "type": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "None"
+            }, 
+            "channel": {
+                "default": "&#8211;", 
+                "required": 1, 
+                "description": "&nbsp;"
+            }
+        }
+    }
+}
