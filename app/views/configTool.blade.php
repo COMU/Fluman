@@ -17,11 +17,7 @@ Config Tool
 <div class="ink-grid">
     <div class="column-group gutters">
         <div class="large-33 medium-30 small-100">
-<<<<<<< HEAD
             <div class="ink-dropdown green large-100" style="height: 250px; overflow-y: scroll;">
-=======
-            <div class="ink-dropdown green large-100" style="height: 300px; overflow-y: scroll;">
->>>>>>> 6c1730e7bf6e78b9053973e326d00631d5dc1dda
                 <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="sources">
                     <li class="heading active">Sources</li>
                 </ul>
@@ -30,11 +26,7 @@ Config Tool
 
         </div>
         <div class="large-33 medium-30 small-100">
-<<<<<<< HEAD
             <div class="ink-dropdown blue large-100" style="height: 250px; overflow-y: scroll;">
-=======
-            <div class="ink-dropdown blue large-100" style="height: 300px; overflow-y: scroll;">
->>>>>>> 6c1730e7bf6e78b9053973e326d00631d5dc1dda
                 <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="channels">
                     <li class="heading active">Channels</li>
                 </ul>
@@ -43,11 +35,7 @@ Config Tool
 
         </div>
         <div class="large-33 medium-30 small-100">
-<<<<<<< HEAD
             <div class="ink-dropdown red large-100" style="height: 250px; overflow-y: scroll;">
-=======
-            <div class="ink-dropdown red large-100" style="height: 300px; overflow-y: scroll;">
->>>>>>> 6c1730e7bf6e78b9053973e326d00631d5dc1dda
                 <ul style="display: block; position: static;" class="dropdown-menu dropdown1" id="sinks">
                     <li class="heading active">Sinks</li>
                 </ul>
@@ -97,16 +85,11 @@ boxes = ["sources","channels","sinks"]
 for (var i=0;i<boxes.length;i++) {
 	box = document.getElementById(boxes[i])
 	for(var key in all[boxes[i]]) {
-<<<<<<< HEAD
       	var liElement = "<li onClick='chooseItem(\""+key+"\")' class=\"separator-above\" id=\""+key+"\"><a>"+key+" </a></li>";
-=======
-      	var liElement = "<li class=\"separator-above\"><a href=\"#\">" + key + "</a></li>"
->>>>>>> 6c1730e7bf6e78b9053973e326d00631d5dc1dda
       	box.insertAdjacentHTML("beforeend",liElement);
     }
 }
 
-<<<<<<< HEAD
 function chooseItem(itemID){
     var generalItem = document.getElementById(itemID);
     var parentClass = generalItem.parentNode
@@ -130,7 +113,5 @@ function addToShowCase(itemID){
 
 }
 
-=======
->>>>>>> 6c1730e7bf6e78b9053973e326d00631d5dc1dda
 </script>
 @stop
