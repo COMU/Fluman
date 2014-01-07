@@ -36,7 +36,7 @@ for source in sources:
 					req = 1
 				c1= str(col[0].find(text=True))
 				c2= str(col[1].find(text=True))
-				c3= str(col[2].string)
+				c3= str(col[2])[4:-5]
 				###########################################################
 				results[whatisit][headerName].setdefault(c1, {})
 				results[whatisit][headerName][c1]['default'] = c2
@@ -64,7 +64,7 @@ for source in channels:
 					req = 1
 				c1= str(col[0].find(text=True))
 				c2= str(col[1].find(text=True))
-				c3= str(col[2].string)
+				c3= str(col[2])[4:-5]
 				###########################################################
 				results[whatisit][headerName].setdefault(c1, {})
 				results[whatisit][headerName][c1]['default'] = c2
@@ -93,7 +93,7 @@ for source in sinks:
 					req = 1
 				c1= str(col[0].find(text=True))
 				c2= str(col[1].find(text=True))
-				c3= str(col[2].string)
+				c3= str(col[2])[4:-5]
 				###########################################################
 				results[whatisit][headerName].setdefault(c1, {})
 				results[whatisit][headerName][c1]['default'] = c2
